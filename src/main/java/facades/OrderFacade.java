@@ -138,6 +138,7 @@ public class OrderFacade {
         try {
             TypedQuery<Long> query = em.createQuery("SELECT SUM(ol.quantity*ol.product.price) FROM Orderline ol JOIN ol.order o WHERE o.id = :o_id ", Long.class);
             query.setParameter("o_id",orderId);
+            // needs handling for null result
             return query.getSingleResult();
         } finally {
             em.close();

@@ -41,8 +41,8 @@ public class TesterClass {
         System.out.println("Finding a product with id " + id + ": \n" + p3);
 
         // Create an order and add it to a customer
-        Order order = orderFacade.addOrderToCustomer(customerId);
-        System.out.println("Creating and adding an order to a customer: \n" + order);
+        //Order order = orderFacade.addOrderToCustomer(customerId);
+        //System.out.println("Creating and adding an order to a customer: \n" + order);
 
 
         // Create an orderline for a specific product and add it to an order

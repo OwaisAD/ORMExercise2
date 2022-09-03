@@ -1,6 +1,7 @@
 package entities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -19,12 +20,14 @@ public class Order {
     private Customer customer;
 
     @Column(name = "created", nullable = false)
-    private Instant created;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp created;
 
     @OneToMany(mappedBy = "order")
     private Set<Orderline> orderlines = new LinkedHashSet<>();
 
     public Order() {
+        this.created = new Timestamp(System.currentTimeMillis());
     }
 
     public Integer getId() {
@@ -43,11 +46,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public Instant getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Instant created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 
@@ -58,5 +61,7 @@ public class Order {
     public void setOrderlines(Set<Orderline> orderlines) {
         this.orderlines = orderlines;
     }
+
+
 
 }

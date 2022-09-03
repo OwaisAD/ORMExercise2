@@ -1,4 +1,5 @@
 import entities.Customer;
+import entities.Order;
 import entities.Product;
 import facades.OrderFacade;
 
@@ -36,6 +37,9 @@ public class TesterClass {
         System.out.println("Finding a product with id " + id + ": \n" + p2);
 
         // Create an order and add it to a customer
+        int customerId = 1;
+        Order order = orderFacade.addOrderToCustomer(customerId);
+        System.out.println("Creating and adding an order to a customer: \n");
 
 
         // Create an orderline for a specific product and add it to an order

@@ -53,6 +53,21 @@ public class Customer {
         this.email = email;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void addOrder(Order order) {
+        if(order != null) {
+            this.orders.add(order);
+            order.setCustomer(this);
+        }
+    }
+
     @Override
     public String toString() {
         return "Customer{" +

@@ -1,6 +1,7 @@
 package facades;
 
 import entities.Customer;
+import entities.Order;
 import entities.Product;
 
 import javax.persistence.EntityManager;
@@ -80,6 +81,21 @@ public class OrderFacade {
         } finally {
             em.close();
         }
+    }
 
+
+    public Order addOrderToCustomer(int customerId) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Customer customer = em.find(Customer.class, customerId); // bedre at bruge em.find da objektet vil være managed
+            Order order = new Order();
+            customer.addOrder(order);
+            em.getTransaction().begin();
+            em.persist(order); // manageren kender ikke order, derfor persistere vi den - den kender dog customer grundet e.find
+            em.getTransaction().commit();
+            return order;
+        }finally {
+            em.close();
+        }
     }
 }

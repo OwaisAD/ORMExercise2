@@ -13,6 +13,8 @@ Basically the steps to follow:
 - REMEMBER TO CLICK ON THE DIFFERENT REFERENCES!! Make a package entities as well
 - Jump into each entity and make sure to have empty constructors in all of them, if not create them
 - Add each entities in <class></class> and properties from the link below in the persistence.xml file
+- Now create a facade (hence facade pattern) and use singleton pattern to make it only possible to initiate once
+
 
 Based on the following exercise:
 https://docs.google.com/document/d/1HOGhs-xQsjy_-Kf2frI-GkF5Xw8ADpHqZpgW-KC9ghI/edit

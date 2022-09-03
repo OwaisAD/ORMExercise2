@@ -1,6 +1,7 @@
 package facades;
 
 import entities.Customer;
+import entities.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -54,5 +55,31 @@ public class OrderFacade {
         } finally {
             em.close();
         }
+    }
+
+    public Product createProduct(String name, String description, int price) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Product product = new Product(name, description, price);
+            em.getTransaction().begin();
+            em.persist(product);
+            em.getTransaction().commit();
+            return product;
+        } finally {
+            em.close();
+        }
+    }
+
+
+    public Product findProduct(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Product product = em.find(Product.class, id);
+            // also needs exception handling
+            return product;
+        } finally {
+            em.close();
+        }
+
     }
 }

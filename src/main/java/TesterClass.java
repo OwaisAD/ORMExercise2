@@ -13,6 +13,8 @@ public class TesterClass {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         OrderFacade orderFacade = OrderFacade.getInstance(emf);
 
+        int customerId = 1;
+
         // Create a customer
         //Customer c1 = orderFacade.createCustomer("Owais", "owais@live.dk");
         //System.out.println("Creating a customer: \n" + c1);
@@ -32,24 +34,30 @@ public class TesterClass {
         // Create a product
         //Product p1 = orderFacade.createProduct("iPhone 14 Max", "Apple telefon", 6999);
         //System.out.println("Creating a product: \n" + p1);
+        //Product p2 = orderFacade.createProduct("iPhone 12 mini", "Apple telefon", 5499);
 
         // Find a product
-        Product p2 = orderFacade.findProduct(id);
-        System.out.println("Finding a product with id " + id + ": \n" + p2);
+        Product p3 = orderFacade.findProduct(id);
+        System.out.println("Finding a product with id " + id + ": \n" + p3);
 
         // Create an order and add it to a customer
-        /*int customerId = 1;
         Order order = orderFacade.addOrderToCustomer(customerId);
-        System.out.println("Creating and adding an order to a customer: \n" + order);*/
+        System.out.println("Creating and adding an order to a customer: \n" + order);
 
 
         // Create an orderline for a specific product and add it to an order
-        Orderline orderline = orderFacade.createOrderline(1,1,2);
+        Orderline orderline = orderFacade.createOrderline(3,2,6);
         System.out.println("Orderline: " + orderline);
 
         // Find all orders for a specific customer
-
+        List<Order> listOfCustomerOrders = orderFacade.listCustomerOrders(customerId);
+        for (Order o : listOfCustomerOrders) {
+            System.out.println(o);
+        }
 
         // Find the total price of an order
+        int orderId = 3;
+        long totalPriceOfOrder = orderFacade.getTotalPriceOfOrder(orderId);
+        System.out.println("Total price of order with id " + orderId + ": " + totalPriceOfOrder);
     }
 }

@@ -117,7 +117,29 @@ public class OrderFacade {
                 em.getTransaction().commit();
             }
             return orderline;
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Order> listCustomerOrders(int customerId) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o JOIN o.customer c WHERE c.id = :c_id", Order.class);
+            query.setParameter("c_id", customerId);
+            return query.getResultList();
         }finally {
+            em.close();
+        }
+    }
+
+    public long getTotalPriceOfOrder(int orderId) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Long> query = em.createQuery("SELECT SUM(ol.quantity*ol.product.price) FROM Orderline ol JOIN ol.order o WHERE o.id = :o_id ", Long.class);
+            query.setParameter("o_id",orderId);
+            return query.getSingleResult();
+        } finally {
             em.close();
         }
     }

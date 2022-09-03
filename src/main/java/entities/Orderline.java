@@ -21,6 +21,9 @@ public class Orderline {
     @Column(name = "quantity")
     private Integer quantity;
 
+    public Orderline() {
+    }
+
     public Integer getId() {
         return id;
     }

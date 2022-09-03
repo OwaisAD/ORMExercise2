@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -15,6 +17,12 @@ public class Customer {
 
     @Column(name = "email", nullable = false, length = 45)
     private String email;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Order> orders = new LinkedHashSet<>();
+
+    public Customer() {
+    }
 
     public Integer getId() {
         return id;

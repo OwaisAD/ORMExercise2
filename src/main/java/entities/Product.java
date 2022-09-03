@@ -24,6 +24,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private Set<Orderline> orderlines = new LinkedHashSet<>();
 
+    public Product() {
+    }
+
     public Integer getId() {
         return id;
     }

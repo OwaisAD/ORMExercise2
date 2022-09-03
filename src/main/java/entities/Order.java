@@ -13,6 +13,7 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    //fremednøgle siden som ejer relationen mellem Customer og Order
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -22,6 +23,9 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private Set<Orderline> orderlines = new LinkedHashSet<>();
+
+    public Order() {
+    }
 
     public Integer getId() {
         return id;

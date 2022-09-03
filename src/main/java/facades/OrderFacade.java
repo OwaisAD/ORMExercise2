@@ -89,10 +89,12 @@ public class OrderFacade {
         try {
             Customer customer = em.find(Customer.class, customerId); // bedre at bruge em.find da objektet vil være managed
             Order order = new Order();
-            customer.addOrder(order);
+
             em.getTransaction().begin();
-            em.persist(order); // manageren kender ikke order, derfor persistere vi den - den kender dog customer grundet e.find
+                em.persist(order); // manageren kender ikke order, derfor persistere vi den - den kender dog customer grundet e.find
+                customer.addOrder(order);
             em.getTransaction().commit();
+
             return order;
         }finally {
             em.close();

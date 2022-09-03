@@ -2,6 +2,7 @@ package facades;
 
 import entities.Customer;
 import entities.Order;
+import entities.Orderline;
 import entities.Product;
 
 import javax.persistence.EntityManager;
@@ -96,6 +97,26 @@ public class OrderFacade {
             em.getTransaction().commit();
 
             return order;
+        }finally {
+            em.close();
+        }
+    }
+
+    public Orderline createOrderline(int orderId, int productId, int quantity) {
+        EntityManager em = emf.createEntityManager();
+        try{
+            Order order = em.find(Order.class, orderId);
+            Product product = em.find(Product.class, productId);
+            Orderline orderline = new Orderline(quantity);
+
+            if(order != null && product != null) {
+                em.getTransaction().begin();
+                    em.persist(orderline);
+                    orderline.setOrder(order);
+                    orderline.setProduct(product);
+                em.getTransaction().commit();
+            }
+            return orderline;
         }finally {
             em.close();
         }

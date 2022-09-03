@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,8 +21,8 @@ public class Order {
     private Customer customer;
 
     @Column(name = "created", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp created;
+    @Temporal(TemporalType.DATE)
+    private Date created;
 
     @OneToMany(mappedBy = "order")
     private Set<Orderline> orderlines = new LinkedHashSet<>();
@@ -46,11 +47,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public Timestamp getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(Timestamp created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
@@ -62,6 +63,12 @@ public class Order {
         this.orderlines = orderlines;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", created=" + created +
+                '}';
+    }
 }

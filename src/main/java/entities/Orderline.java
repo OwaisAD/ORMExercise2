@@ -24,6 +24,10 @@ public class Orderline {
     public Orderline() {
     }
 
+    public Orderline(int quantity) {
+        this.quantity = quantity;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -56,4 +60,20 @@ public class Orderline {
         this.quantity = quantity;
     }
 
+    public Orderline(Integer id, Order order, Product product, Integer quantity) {
+        this.id = id;
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Orderline{" +
+                "id=" + id +
+                ", order=" + order +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

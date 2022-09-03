@@ -74,7 +74,6 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", orders=" + orders +
                 '}';
     }
 }

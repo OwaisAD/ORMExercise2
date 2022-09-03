@@ -80,7 +80,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", orderlines=" + orderlines +
                 '}';
     }
 }

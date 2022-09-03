@@ -24,6 +24,11 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -48,4 +53,13 @@ public class Customer {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
 }

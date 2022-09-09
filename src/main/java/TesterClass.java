@@ -52,13 +52,16 @@ public class TesterClass {
         // Find all orders for a specific customer
         List<Order> listOfCustomerOrders = orderFacade.listCustomerOrders(customerId);
 
-        // Imperativ programmeing (en stil eller paradigme)
+        // Imperativ programmering (en stil eller paradigme)
+        // Step for step
         for (Order o : listOfCustomerOrders) {
             System.out.println(o);
         }
-        // BEGGE LØKKER GØR DET SAMME, MEN DEN ENE FOREGÅR I EN FUNKTION
+
         // Deklarativt programmering eller "functional"
         listOfCustomerOrders.forEach(o -> System.out.println(o));
+
+        // BEGGE LØKKER GØR DET SAMME, MEN DEN ENE FOREGÅR I EN FUNKTION
 
         // Find the total price of an order
         int orderId = 3;
